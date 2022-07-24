@@ -46,7 +46,7 @@ class product(models.Model):
                     'product_qty': 1,
                     'date_planned_start': datetime.now() + timedelta(days=14),
                     'date_planned_finished': datetime.now() + timedelta(days=24),
-                    'product_uom_id':i.uom_id,
+                    'product_uom_id':i.uom_id.id,
                     # 'purchase_order_line_id': purchase_order_line_id,
                     'origin':'auto mo',
                     'all_number': 1,
