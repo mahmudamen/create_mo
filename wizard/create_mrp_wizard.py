@@ -33,7 +33,6 @@ class CreateMrpWizard(models.TransientModel):
     def action_create_mrp(self):
         for i in self.order_line_ids:
             if i.checkbox:
-
                 bom_values = {
                     'product_tmpl_id':
                         469,
@@ -73,7 +72,7 @@ class CreateMrpLineWizard(models.TransientModel):
                                      'order_wizard_id',
                                      string='Products')
     name = fields.Text(string='Description')
-    product_id = fields.Many2one('product.product', string='Product')
+    product_id = fields.Many2one('product.template', string='Product')
     product_tmpl_id = fields.Many2one('product.product', string='Product')
     product_qty = fields.Float(string='Quantity',
                                digits=dp.get_precision(
