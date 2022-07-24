@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="sale_order_form_inherit">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_cancel']" position="after">
+                    <button name="%(create_mo.action_create_mrp_order)d"
+                            type="action" class="btn-primary"
+                            attrs="{'invisible': ['|', ('order_line', '=', [])]}"
+                            string="Create MRP"/>
+                </xpath>
+            <!--     <xpath expr="//field[@name='order_line']/form//label[@for='analytic_tag_ids']"
+                       position="before">
+                    <field name="need_mrp"/>
+                    <field name="mrp_id" invisible="1"/>
+                </xpath>-->
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']"
+                       position="before">
+                    <field name="need_mrp"/>
+                    <field name="mrp_id" invisible="1"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Manufacturing">
+                        <group>
+                            <separator colspan="4" string="Manufacturing"/>
+                            <group colspan="4">
+                                <field name="mrp_ids" nolabel="1"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

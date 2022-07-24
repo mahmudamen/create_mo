@@ -1,0 +1,57 @@
+Odoo Proprietary License v1.0
+
+This software and associated files (the "Software") may only be used (executed,
+modified, executed after modifications) if you have purchased a valid license
+from the authors, typically via Odoo Apps, or if you have received a written
+agreement from the authors of the Software (see the COPYRIGHT file).
+
+You may develop Odoo modules that use the Software as a library (typically
+by depending on it, importing it and using its resources), but without copying
+any source code or material from the Software. You may distribute those
+modules under the license of your choice, provided that this license is
+compatible with the terms of the Odoo Proprietary License (For example:
+LGPL, MIT, or proprietary licenses similar to this one).
+
+It is forbidden to publish, distribute, sublicense, or sell copies of the Software
+or modified copies of the Software.
+
+The above copyright notice and this permission notice must be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+===========================
+
+Собственная лицензия Odoo v1.0
+
+Это программное обеспечение и связанные с ним файлы («Программное обеспечение») можно использовать только (запускать,
+изменено, выполнено после изменений), если вы приобрели действующую лицензию
+от авторов, обычно через приложения Odoo, или если вы получили письменное
+согласие авторов Программного обеспечения (см. файл АВТОРСКОГО ПРАВА).
+
+Вы можете разрабатывать модули Odoo, которые используют Программное обеспечение в качестве библиотеки (обычно
+в зависимости от него, импортируя его и используя его ресурсы), но без копирования
+любой исходный код или материалы из Программного обеспечения. Вы можете распространять эти
+модули по выбранной вами лицензии, при условии, что эта лицензия
+совместимо с условиями проприетарной лицензии Odoo (например:
+LGPL, MIT или проприетарные лицензии, аналогичные этой).
+
+Запрещается публиковать, распространять, сублицензировать или продавать копии Программного обеспечения.
+или модифицированные копии Программного обеспечения.
+
+Приведенное выше уведомление об авторских правах и это уведомление о разрешении должны быть включены во все
+копии или существенные части Программного обеспечения.
+
+ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ЯВНЫХ ИЛИ
+ПОДРАЗУМЕВАЕМЫЕ, ВКЛЮЧАЯ, НО НЕ ОГРАНИЧЕННАЯ, ГАРАНТИИ КОММЕРЧЕСКОЙ ЦЕННОСТИ,
+ПРИГОДНОСТЬ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ И ЗАЩИТА ОТ ПРАВ.
+НИ ПРИ КАКИХ ОБСТОЯТЕЛЬСТВАХ АВТОРЫ ИЛИ ВЛАДЕЛЬЦЫ АВТОРСКИХ ПРАВ НЕ НЕСЕТ ОТВЕТСТВЕННОСТИ ЗА ЛЮБЫЕ ПРЕТЕНЗИИ,
+УБЫТКИ ИЛИ ДРУГАЯ ОТВЕТСТВЕННОСТЬ, В РЕЗУЛЬТАТЕ ДОГОВОРА, ПРАКТИКИ ИЛИ ИНЫМ ОБРАЗОМ,
+ВОЗНИКНОВЕНИЕ, ИЗ-ЗА ИЛИ В СВЯЗИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ ИЛИ ИСПОЛЬЗОВАНИЕМ ИЛИ ДРУГИМ
+ДЕЯТЕЛЬНОСТЬ В ПРОГРАММНОМ ОБЕСПЕЧЕНИИ.
