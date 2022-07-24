@@ -43,12 +43,12 @@ class CreateMrpWizard(models.TransientModel):
                 }
                 mrp_bom = self.env['mrp.bom'].create(bom_values)
                 production_vals = {
-                    'product_id': i.product_id.product_tmpl_id.id,
+                    'product_id': i.product_tmpl_id.id,
                     'bom_id': mrp_bom.id,
                     'product_qty': i.product_qty,
                     'date_planned_start': datetime.now() + timedelta(days=14),
                     'date_planned_finished': datetime.now() + timedelta(days=24),
-                    'product_uom_id':i.product_id.id,
+                    'product_uom_id':1,
                     # 'purchase_order_line_id': purchase_order_line_id,
                     'origin': i.product_source,
                     'all_number': 1,
