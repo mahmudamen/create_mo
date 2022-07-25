@@ -36,7 +36,7 @@ class product(models.Model):
         for i in self:
             bom_values = {
                     'product_tmpl_id':
-                        i.id,
+                        469,
                     'product_id':
                          i.id,
                     'type': 'normal',
