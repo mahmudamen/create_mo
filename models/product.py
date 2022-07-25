@@ -1,5 +1,5 @@
 from odoo import fields, models, api, _
-
+from odoo.addons import decimal_precision as dp
 from datetime import datetime, timedelta
 
 class product(models.Model):
@@ -7,6 +7,10 @@ class product(models.Model):
     _description = 'Description'
 
     product_name = fields.Char(string='name',related="product_tmpl_id.name")
+    product_source = fields.Char()
+    product_qty = fields.Float(string='Quantity',
+                               digits=dp.get_precision(
+                                   'Product Unit of Measure'))
 
     def action_bom_cost(self):
 
@@ -28,12 +32,11 @@ class product(models.Model):
 
 
     def action_create_mrp(self):
-        id = self._context.get('active_id')
-        w = self.env['product.product'].search([('id','=',id)])
+
         for i in self:
             bom_values = {
                     'product_tmpl_id':
-                        469,
+                        i.id,
                     'product_id':
                          i.id,
                     'type': 'normal',
@@ -43,17 +46,17 @@ class product(models.Model):
             production_vals = {
                     'product_id': i.id,
                     'bom_id': mrp_bom.id,
-                    'product_qty': 1,
+                    'product_qty': i.product_qty,
                     'date_planned_start': datetime.now() + timedelta(days=14),
                     'date_planned_finished': datetime.now() + timedelta(days=24),
                     'product_uom_id':i.uom_id.id,
                     # 'purchase_order_line_id': purchase_order_line_id,
-                    'origin':'auto mo',
+                    'origin':i.product_source,
                     'all_number': 1,
                     'number': 1,
                     # 'spec_url': line.spec_url,
                     # 'attachment_id': line.attachment_id.id,
                 }
             self.env['mrp.production'].create(production_vals)
-            self.message_post(body='create mo')
+
 
