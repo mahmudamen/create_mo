@@ -1,6 +1,7 @@
 from odoo import fields, models, api, _
 from odoo.addons import decimal_precision as dp
 from datetime import datetime, timedelta
+from odoo.exceptions import UserError
 
 class product(models.Model):
     _inherit = 'product.product'
@@ -11,6 +12,8 @@ class product(models.Model):
     product_qty = fields.Float(string='Quantity',
                                digits=dp.get_precision(
                                    'Product Unit of Measure'))
+
+
 
     def action_bom_cost(self):
 
@@ -32,18 +35,22 @@ class product(models.Model):
 
 
     def action_create_mrp(self):
-
+        last_id = self.env['mrp.routing'].search([])[-1].id
         for i in self:
-            bom_values = {
+            if i.product_qty <= 0:
+                raise UserError(_('qty cant be zero' ))
+            else:
+                bom_values = {
                     'product_tmpl_id':
-                        469,
+                        i.product_tmpl_id.id,
                     'product_id':
                          i.id,
                     'type': 'normal',
                     'product_qty': 1,
+                    'routing_id':last_id,
                 }
-            mrp_bom = self.env['mrp.bom'].create(bom_values)
-            production_vals = {
+                mrp_bom = self.env['mrp.bom'].create(bom_values)
+                production_vals = {
                     'product_id': i.id,
                     'bom_id': mrp_bom.id,
                     'product_qty': i.product_qty,
@@ -57,6 +64,6 @@ class product(models.Model):
                     # 'spec_url': line.spec_url,
                     # 'attachment_id': line.attachment_id.id,
                 }
-            self.env['mrp.production'].create(production_vals)
+                self.env['mrp.production'].create(production_vals)
 
 
