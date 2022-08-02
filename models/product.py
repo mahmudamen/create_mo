@@ -40,30 +40,26 @@ class product(models.Model):
             if i.product_qty <= 0:
                 raise UserError(_('qty cant be zero' ))
             else:
-                bom_values = {
-                    'product_tmpl_id':
-                        i.product_tmpl_id.id,
-                    'product_id':
-                         i.id,
-                    'type': 'normal',
-                    'product_qty': 1,
-                    'routing_id':last_id,
-                }
-                mrp_bom = self.env['mrp.bom'].create(bom_values)
-                production_vals = {
-                    'product_id': i.id,
-                    'bom_id': mrp_bom.id,
-                    'product_qty': i.product_qty,
-                    'date_planned_start': datetime.now() + timedelta(days=14),
-                    'date_planned_finished': datetime.now() + timedelta(days=24),
-                    'product_uom_id':i.uom_id.id,
-                    # 'purchase_order_line_id': purchase_order_line_id,
-                    'origin':i.product_source,
-                    'all_number': 1,
-                    'number': 1,
-                    # 'spec_url': line.spec_url,
-                    # 'attachment_id': line.attachment_id.id,
-                }
-                self.env['mrp.production'].create(production_vals)
+                mrp_bom = self.env['mrp.bom'].search([('product_tmpl_id','=',i.product_tmpl_id.id)])
+                if mrp_bom:
+                    production_vals = {
+                        'product_id': i.id,
+                        'bom_id': mrp_bom.id,
+                        'product_qty': i.product_qty,
+                        'date_planned_start': datetime.now() + timedelta(days=14),
+                        'date_planned_finished': datetime.now() + timedelta(days=24),
+                        'product_uom_id':i.uom_id.id,
+                        # 'purchase_order_line_id': purchase_order_line_id,
+                        'origin':i.product_source,
+                        'all_number': 1,
+                        'number': 1,
+                        # 'spec_url': line.spec_url,
+                        # 'attachment_id': line.attachment_id.id,
+                    }
+                    s = self.env['mrp.production'].create(production_vals)
+                    o = self.env['mrp.production'].search([('id','=',s.id)])
+                    m = o._onchange_move_raw()
+                else:
+                    raise UserError(_('can not find bom'))
 
 
