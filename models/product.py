@@ -40,7 +40,8 @@ class product(models.Model):
             if i.product_qty <= 0:
                 raise UserError(_('qty cant be zero' ))
             else:
-                mrp_bom = self.env['mrp.bom'].search([('product_tmpl_id','=',i.product_tmpl_id.id)])[-1]
+                mrp_bom = self.env['mrp.bom'].search([('product_tmpl_id','=',i.product_tmpl_id.id)])
+                
                 if mrp_bom:
                     production_vals = {
                         'product_id': i.id,
