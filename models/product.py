@@ -97,7 +97,7 @@ class MoWorkOrder(models.Model):
             self._create_or_update_finished_line()
 
         # Update workorder quantity produced
-        self.qty_produced += self.qty_producing
+        #self.qty_produced += self.qty_producing
 
         # Suggest a finished lot on the next workorder
         if self.next_work_order_id and self.product_tracking != 'none' and (not self.next_work_order_id.finished_lot_id or self.next_work_order_id.finished_lot_id == self.finished_lot_id):
