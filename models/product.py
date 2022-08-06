@@ -63,7 +63,7 @@ class product(models.Model):
                     s = self.env['mrp.production'].create(production_vals)
                     o = self.env['mrp.production'].search([('id','=',s.id)])
                     m = o._onchange_move_raw()
-                    a = o._generate_finished_moves()
+                    a = o.action_confirm()
                 else:
                     raise UserError(_('can not find bom'))
 
