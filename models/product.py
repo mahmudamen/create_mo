@@ -10,7 +10,7 @@ class product(models.Model):
     _description = 'Description'
 
     product_name = fields.Char(string='name',related="product_tmpl_id.name")
-    product_source = fields.Char()
+    product_source = fields.Char(string='Cut number')
     product_qty = fields.Float(string='Quantity',
                                digits=dp.get_precision(
                                    'Product Unit of Measure'))

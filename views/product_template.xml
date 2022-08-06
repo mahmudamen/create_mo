@@ -12,11 +12,26 @@
                     <field name="product_qty"/>
                 </xpath>
                 <xpath expr="//field[@name='product_qty']" position="after">
-                    <field name="product_source"/>
+                    <field name="product_source" string="Cut number"/>
                 </xpath>
                 <tree position="attributes">
                     <attribute name="editable">bottom</attribute>
                 </tree>
+            </field>
+        </record>
+        <record id="product_template_search_inherit" model="ir.ui.view">
+            <field name="name">product.template.search</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_search_form_view"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/group" position="inside">
+                     <filter string="cut number" name="cutnumber" context="{'group_by':'product_source'}"/>
+                </xpath>
+                <xpath expr="//search" position="inside">
+                    <field name="product_source" string="cut numer"/>
+                </xpath>
+
             </field>
         </record>
     </data>
