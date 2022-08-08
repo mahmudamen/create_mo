@@ -22,6 +22,7 @@
         'views/product_template.xml',
         'views/product.xml',
         'views/work_order.xml',
+        'views/mo.xml',
     ],
     'demo': [
     ],
