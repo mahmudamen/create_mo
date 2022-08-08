@@ -18,23 +18,7 @@ class product(models.Model):
 
 
 
-    def action_bom_cost(self):
 
-        view_id_form = self.env['ir.ui.view'].search([('name', '=', 'create_mrp_wizard_form')])
-        view_id_tree = self.env['ir.ui.view'].search([('name', '=', 'create_mrp_wizard_form')])
-
-
-        return {
-            'type': 'ir.actions.act_window',
-            # 'name': _('Product'),
-            'res_model': 'create.mrp.wizard',
-            'view_type': 'form',
-            'view_mode': 'tree,form',
-            # 'view_id': view_id_tree.id,
-            'views': [(view_id_tree.id, 'tree'), (view_id_form.id, 'form')],
-            'target': 'current',
-            # 'res_id': your.model.id,
-        }
 
 
     def action_create_mrp(self):
