@@ -2,9 +2,9 @@
 <odoo>
     <data>
 
-        <record id="ModelName_form_inherit" model="ir.ui.view">
-            <field name="name">ProjectName.ModelName.form</field>
-            <field name="model">ProjectName.ModelName</field>
+        <record id="mrp_production_form_inherit" model="ir.ui.view">
+            <field name="name">mrp.production.form</field>
+            <field name="model">mrp.production</field>
             <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
