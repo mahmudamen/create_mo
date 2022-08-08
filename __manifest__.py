@@ -17,7 +17,7 @@
         'account',
     ],
     'data': [
-        'wizard/create_mrp_wizard_views.xml',
+        #'wizard/create_mrp_wizard_views.xml',
         'views/sale_views.xml',
         'views/product_template.xml',
         'views/product.xml',
