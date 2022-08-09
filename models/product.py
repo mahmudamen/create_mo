@@ -66,3 +66,62 @@ class MrpWorkorder(models.Model):
             previous_wo = self.env['mrp.workorder'].search([ ('next_work_order_id', '=', rec.id)])
             last_step_qty = previous_wo.qty_produced
             rec.previous_order_qty = last_step_qty
+
+class MrpProduction(models.Model):
+    """ Manufacturing Orders """
+    _inherit = 'mrp.production'
+    def _get_finished_move_value(self, product_id, product_uom_qty, product_uom, operation_id=False, byproduct_id=False):
+        return {
+                'product_id': product_id,
+                'product_uom_qty': product_uom_qty,
+                'product_uom': product_uom,
+                'operation_id': operation_id,
+                'byproduct_id': byproduct_id,
+                'unit_factor': product_uom_qty / self.product_qty,
+                'name': self.name,
+                'date': self.date_planned_start,
+                'date_expected': self.date_planned_finished,
+                'picking_type_id': self.picking_type_id.id,
+                'location_id': self.product_id.with_context(force_company=self.company_id.id).property_stock_production.id,
+                'location_dest_id': self.location_dest_id.id,
+                'company_id': self.company_id.id,
+                'production_id': self.id,
+                'warehouse_id': self.location_dest_id.get_warehouse().id,
+                'origin': self.origin,
+                'group_id': self.procurement_group_id.id,
+                'propagate_cancel': self.propagate_cancel,
+                'propagate_date': self.propagate_date,
+                'propagate_date_minimum_delta': self.propagate_date_minimum_delta,
+                'move_dest_ids': [(4, x.id) for x in self.move_dest_ids if not byproduct_id],
+        }
+
+    def _get_move_raw_values(self, bom_line, line_data):
+        quantity = line_data['qty']
+        # alt_op needed for the case when you explode phantom bom and all the lines will be consumed in the operation given by the parent bom line
+        alt_op = line_data['parent_line'] and line_data['parent_line'].operation_id.id or False
+        source_location = self.location_src_id
+        data = {
+            'sequence': bom_line.sequence,
+            'name': self.name,
+            'reference': self.name,
+            'date': self.date_planned_start,
+            'date_expected': self.date_planned_start,
+            'bom_line_id': bom_line.id,
+            'picking_type_id': self.picking_type_id.id,
+            'product_id': bom_line.product_id.id,
+            'product_uom_qty': quantity,
+            'product_uom': bom_line.product_uom_id.id,
+            'location_id': source_location.id,
+            'location_dest_id': self.product_id.with_context(force_company=self.company_id.id).property_stock_production.id,
+            'raw_material_production_id': self.id,
+            'company_id': self.company_id.id,
+            'operation_id': bom_line.operation_id.id or alt_op,
+            'price_unit': bom_line.product_id.standard_price,
+            'procure_method': 'make_to_stock',
+            'origin': self.origin,
+            'state': 'draft',
+            'warehouse_id': source_location.get_warehouse().id,
+            'group_id': self.procurement_group_id.id,
+            'propagate_cancel': self.propagate_cancel,
+        }
+        return data

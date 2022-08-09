@@ -59,9 +59,6 @@ class CreateMrpWizard(models.TransientModel):
                 self.env['mrp.production'].create(production_vals)
 
 
-
-
-
 class CreateMrpLineWizard(models.TransientModel):
     _name = 'create.mrp.line.wizard'
 
