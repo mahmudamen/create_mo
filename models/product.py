@@ -46,6 +46,9 @@ class product(models.Model):
                     }
                     s = self.env['mrp.production'].create(production_vals)
                     o = self.env['mrp.production'].search([('id','=',s.id)])
+                    x = self.env['stock.picking'].search([('id','=',o.picking_ids.ids)])
+                    for i in x:
+                        x.origin = o.origin
                     m = o._onchange_move_raw()
                     a = o.action_confirm()
                 else:
