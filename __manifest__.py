@@ -18,7 +18,7 @@
     ],
     'data': [
         #'wizard/create_mrp_wizard_views.xml',
-        'views/sale_views.xml',
+        #'views/sale_views.xml',
         'views/product_template.xml',
         'views/product.xml',
         'views/work_order.xml',
