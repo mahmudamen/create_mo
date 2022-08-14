@@ -37,7 +37,7 @@
         <record id="mrp.workorder_search_inherit" model="ir.ui.view">
             <field name="name">mrp.workorder.search</field>
             <field name="model">mrp.workorder</field>
-            <field name="inherit_id" ref="mrp.view_mrp_production_workorder_form_view_filter"/>
+            <field name="inherit_id" ref="mrp.mrp_production_workorder_tree_view_inherit"/>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <xpath expr="//search/group" position="inside">
