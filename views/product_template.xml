@@ -49,5 +49,36 @@
 
             </field>
         </record>
+        <record id="mrp_production_search_inherit" model="ir.ui.view">
+            <field name="name">mrp.production.search</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.view_mrp_production_filter"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/group" position="inside">
+                     <filter string="cut number" name="cutnumber" context="{'group_by':'origin'}"/>
+                </xpath>
+                <xpath expr="//search" position="inside">
+                    <field name="origin" string="cut number"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="mrp_workorder_search_inherit" model="ir.ui.view">
+            <field name="name">mrp.workorder.search</field>
+            <field name="model">mrp.workorder</field>
+            <field name="inherit_id" ref="mrp.view_mrp_production_workorder_form_view_filter"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/group" position="inside">
+                     <filter string="cut number" name="cutnumber" context="{'group_by':'origin'}"/>
+                </xpath>
+                <xpath expr="//search" position="inside">
+                    <field name="origin" string="cut number"/>
+                </xpath>
+
+            </field>
+        </record>
     </data>
 </odoo>
