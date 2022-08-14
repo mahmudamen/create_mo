@@ -44,7 +44,7 @@
                      <filter string="cut number" name="cutnumber" context="{'group_by':'product_source'}"/>
                 </xpath>
                 <xpath expr="//search" position="inside">
-                    <field name="product_source" string="cut number"/>
+                    <field name="origin" string="cut number"/>
                 </xpath>
 
             </field>
