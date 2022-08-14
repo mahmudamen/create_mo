@@ -41,7 +41,7 @@
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <xpath expr="//search/group" position="inside">
-                     <filter string="cut number" name="cutnumber" context="{'group_by':'product_source'}"/>
+                     <filter string="cut number" name="cutnumber" context="{'group_by':'origin'}"/>
                 </xpath>
                 <xpath expr="//search" position="inside">
                     <field name="origin" string="cut number"/>
