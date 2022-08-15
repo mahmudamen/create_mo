@@ -47,8 +47,8 @@ class product(models.Model):
                     x = self.env['stock.picking'].search([('id', '=', o.picking_ids.ids)])
                     for i in x:
                         x.origin = o.origin
-                    m = o._onchange_move_raw()
-                    a = o.action_confirm()
+                    #m = s._onchange_move_raw()
+                    #a = s.action_confirm()
                 else:
                     raise UserError(_('can not find bom'))
 
