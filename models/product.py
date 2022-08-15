@@ -24,13 +24,16 @@ class product(models.Model):
                 mrp_bom = self.env['mrp.bom'].search([('product_tmpl_id', '=', i.product_tmpl_id.id)])
 
                 if mrp_bom:
+                    z = self.env['ir.sequence'].next_by_code('mrp.production')
                     production_vals = {
+                        'name':z,
                         'product_id': i.id,
                         'bom_id': mrp_bom.id,
                         'product_qty': i.product_qty,
                         'date_planned_start': datetime.now() + timedelta(days=14),
                         'date_planned_finished': datetime.now() + timedelta(days=24),
                         'product_uom_id': i.uom_id.id,
+                        'picking_type_id':8,
                         # 'purchase_order_line_id': purchase_order_line_id,
                         'origin': i.product_source,
                         'all_number': 1,
@@ -38,6 +41,7 @@ class product(models.Model):
                         # 'spec_url': line.spec_url,
                         # 'attachment_id': line.attachment_id.id,
                     }
+
                     s = self.env['mrp.production'].create(production_vals)
                     o = self.env['mrp.production'].search([('id', '=', s.id)])
                     x = self.env['stock.picking'].search([('id', '=', o.picking_ids.ids)])
@@ -47,6 +51,7 @@ class product(models.Model):
                     a = o.action_confirm()
                 else:
                     raise UserError(_('can not find bom'))
+
 
 
 class MrpWorkorder(models.Model):
