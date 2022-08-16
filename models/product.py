@@ -38,9 +38,7 @@ class product(models.Model):
                         'origin': i.product_source,
                         'all_number': 1,
                         'number': 1,
-                        
-                        'group_id': self.procurement_group_id.id,
-                        'propagate_cancel': self.propagate_cancel,
+                    
                     }
 
                     s = self.env['mrp.production'].create(production_vals)
