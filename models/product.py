@@ -48,11 +48,13 @@ class product(models.Model):
                     for i in x:
                         x.origin = o.origin
                     m = s._onchange_move_raw()
-                    #a = s.action_confirm()
+                    a = s.action_confirm()
                 else:
                     raise UserError(_('can not find bom'))
-
-
+    @api.model
+    def action_confirm(self):
+        action_confirm = super(MrpProduction, self).action_confirm()
+        return action_confirm
 
 class MrpWorkorder(models.Model):
     _inherit = 'mrp.workorder'
@@ -140,3 +142,5 @@ class MrpProduction(models.Model):
             'propagate_cancel': self.propagate_cancel,
         }
         return data
+
+
