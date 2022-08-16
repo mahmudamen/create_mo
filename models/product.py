@@ -51,10 +51,7 @@ class product(models.Model):
                     a = s.action_confirm()
                 else:
                     raise UserError(_('can not find bom'))
-    @api.model
-    def action_confirm(self):
-        action_confirm = super(MrpProduction, self).action_confirm()
-        return action_confirm
+
 
 class MrpWorkorder(models.Model):
     _inherit = 'mrp.workorder'
@@ -143,4 +140,7 @@ class MrpProduction(models.Model):
         }
         return data
 
-
+    
+    def action_confirm(self):
+        action_confirm = super(MrpProduction, self).action_confirm()
+        return action_confirm
