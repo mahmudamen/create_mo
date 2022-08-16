@@ -22,7 +22,7 @@ class product(models.Model):
                 raise UserError(_('qty cant be zero'))
             else:
                 mrp_bom = self.env['mrp.bom'].search([('product_tmpl_id', '=', i.product_tmpl_id.id)])
-                source_location = self.location_src_id
+
                 if mrp_bom:
                     z = self.env['ir.sequence'].next_by_code('mrp.production')
                     production_vals = {
@@ -38,7 +38,7 @@ class product(models.Model):
                         'origin': i.product_source,
                         'all_number': 1,
                         'number': 1,
-                        'warehouse_id': source_location.get_warehouse().id,
+                        
                         'group_id': self.procurement_group_id.id,
                         'propagate_cancel': self.propagate_cancel,
                     }
