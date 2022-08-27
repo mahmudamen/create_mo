@@ -24,9 +24,9 @@ class product(models.Model):
                 mrp_bom = self.env['mrp.bom'].search([('product_tmpl_id', '=', i.product_tmpl_id.id)])
 
                 if mrp_bom:
-                    z = self.env['ir.sequence'].next_by_code('mrp.production')
+                    #z = self.env['ir.sequence'].next_by_code('mrp.production')
                     production_vals = {
-                        'name':z,
+                        #'name':z,
                         'product_id': i.id,
                         'bom_id': mrp_bom.id,
                         'product_qty': i.product_qty,
@@ -38,16 +38,19 @@ class product(models.Model):
                         'origin': i.product_source,
                         'all_number': 1,
                         'number': 1,
-                    
+
                     }
 
                     s = self.env['mrp.production'].create(production_vals)
+                    m = s._onchange_move_raw()
                     o = self.env['mrp.production'].search([('id', '=', s.id)])
                     x = self.env['stock.picking'].search([('id', '=', o.picking_ids.ids)])
                     for i in x:
                         x.origin = o.origin
-                    m = s._onchange_move_raw()
-                    a = s.action_confirm()
+
+                    #a = s.action_confirm()
+
+
                 else:
                     raise UserError(_('can not find bom'))
 
