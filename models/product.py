@@ -42,6 +42,7 @@ class product(models.Model):
                     }
 
                     s = self.env['mrp.production'].create(production_vals)
+                    m = s.onchange_picking_type()
                     m = s._onchange_move_raw()
                     o = self.env['mrp.production'].search([('id', '=', s.id)])
                     x = self.env['stock.picking'].search([('id', '=', o.picking_ids.ids)])
