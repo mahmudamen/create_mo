@@ -146,4 +146,7 @@ class MrpProduction(models.Model):
 
     def action_confirm(self):
         action_confirm = super(MrpProduction, self).action_confirm()
+        x = self.picking_ids
+        for i in x:
+            i.origin = self.origin
         return action_confirm
