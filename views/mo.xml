@@ -24,9 +24,7 @@
                 <xpath expr="//field[@name='origin']" position="attributes">
                     <attribute name="readonly">False</attribute>
                 </xpath>
-                <xpath expr="//field[@name='origin']" position="attributes">
-                    <attribute name="readonly">[('state', '=', 'confirmed')]</attribute>
-                </xpath>
+
             </field>
         </record>
     </data>
