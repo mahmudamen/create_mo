@@ -22,7 +22,7 @@
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='origin']" position="attributes">
-                    <attribute name="readonly">[('state', '=', 'done')]</attribute>
+                    <attribute name="readonly">[('state', '=', 'confirmed')]</attribute>
                 </xpath>
 
             </field>
