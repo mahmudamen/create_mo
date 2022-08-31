@@ -22,9 +22,8 @@
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='origin']" position="attributes">
-                    <attribute name="readonly">False</attribute>
+                    <attribute name="readonly">[('state', 'in', 'done,cancel,confirmed')]</attribute>
                 </xpath>
-
             </field>
         </record>
     </data>
