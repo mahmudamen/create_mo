@@ -22,7 +22,7 @@
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='origin']" position="replace">
-                    <field name="origin" attrs="{'readonly':[('state','in','done,cancel,confirmed')]}" />
+                    <field name="origin" attrs="{'readonly':[('state','=','confirmed')]}" />
                 </xpath>
             </field>
         </record>
