@@ -14,5 +14,18 @@
 
             </field>
         </record>
+
+        <record id="mrp_production_form_inherit" model="ir.ui.view">
+            <field name="name">mrp.production.form</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='origin']" position="attribute">
+                    <attribute name="readonly">[('state', '=', 'done')]</attribute>
+                </xpath>
+
+            </field>
+        </record>
     </data>
 </odoo>

@@ -47,7 +47,7 @@ class product(models.Model):
                     o = self.env['mrp.production'].search([('id', '=', s.id)])
                     x = self.env['stock.picking'].search([('id', '=', o.picking_ids.ids)])
                     for i in x:
-                        x.origin = o.origin
+                        i.origin = o.origin
 
                     #a = s.action_confirm()
 
