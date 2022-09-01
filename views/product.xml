@@ -15,13 +15,13 @@
                     <field name="product_qty"/>
                     <field name="product_source" string="Cut number"/>
                     <field name="company_id" groups="base.group_multi_company" optional="hide" readonly="1"/>
-                    <field name="lst_price" optional="show" string="Sales Price"/>
-                    <field name="standard_price" optional="show" readonly="1"/>
+                    <field name="lst_price" optional="hide" string="Sales Price"/>
+                    <field name="standard_price" optional="hide" readonly="1"/>
                     <field name="categ_id" optional="hide"/>
                     <field name="type" optional="hide" readonly="1"/>
                     <field name="price" invisible="not context.get('pricelist',False)"/>
                     <field name="uom_id" options="{'no_open': True, 'no_create': True}" groups="uom.group_uom"
-                           optional="show" readonly="1"/>
+                           optional="hide" readonly="1"/>
                     <field name="product_tmpl_id" invisible="1" readonly="1"/>
                     <field name="active" invisible="1"/>
                 </tree>
